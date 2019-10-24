@@ -1,7 +1,7 @@
 package is
 
 import (
-    "strings"
+	"strings"
 )
 
 type Opcode byte
@@ -11,20 +11,16 @@ const (
 	STR
 	LDI
 	MOV
-
 	POP
 	PSH
-
-	BIZ
+	BNZ
 	CAL
-    RET
-
+	ADR
 	ADD
 	SHR
 	AND
 	ORR
 	EOR
-
 	OST
 	IST
 	opUNK
@@ -37,9 +33,9 @@ var Opcodes = []Opcode{
 	MOV,
 	POP,
 	PSH,
-	BIZ,
+	BNZ,
 	CAL,
-    RET,
+	ADR,
 	ADD,
 	SHR,
 	AND,
@@ -49,16 +45,16 @@ var Opcodes = []Opcode{
 	IST,
 }
 
-var opStrings = []string {
+var opStrings = []string{
 	"LDR",
 	"STR",
 	"LDI",
 	"MOV",
 	"POP",
 	"PSH",
-	"BIZ",
+	"BNZ",
 	"CAL",
-    "RET",
+	"ADR",
 	"ADD",
 	"SHR",
 	"AND",
@@ -77,7 +73,7 @@ func (op Opcode) String() string {
 }
 
 func DecodeOpcode(s string) Opcode {
-    s = strings.ToLower(s)
+	s = strings.ToLower(s)
 	for i, v := range opStrings {
 		if v == s {
 			return Opcode(i)
@@ -86,4 +82,3 @@ func DecodeOpcode(s string) Opcode {
 
 	return opUNK
 }
-

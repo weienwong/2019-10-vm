@@ -3,23 +3,27 @@ package is
 type Instr byte
 
 func (instr Instr) Op() Opcode {
-    // TODO
-    return 0
+	// TODO
+	return 0
 }
 
 func (instr Instr) R1() Reg {
-    // TODO
-    return 0
+	// TODO
+	return 0
 }
 
 func (instr Instr) R2() Reg {
-    // TODO
-    return 0
+	// TODO
+	return 0
+}
+
+func (instr Instr) IReg() IReg {
+	return IReg(instr.R2())
 }
 
 func (instr Instr) Imm() byte {
-    // TODO
-    return 0
+	// TODO
+	return 0
 }
 
 /*
@@ -32,12 +36,12 @@ func (instr Instr) String() string {
 
 func (instr Instr) Encode() byte {
 	// TODO
-    return 0
+	return 0
 }
 
 func DecodeInstr(b byte) Instr {
 	// TODO
-    return 0
+	return 0
 }
 
 type Reg byte
@@ -49,4 +53,10 @@ const (
 	R3
 )
 
+type IReg byte
 
+const (
+	PC IReg = iota
+	FP
+	SP
+)
