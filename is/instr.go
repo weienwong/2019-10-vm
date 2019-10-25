@@ -1,29 +1,25 @@
 package is
 
-type Instr byte
+type Instruction byte
 
-func (instr Instr) Op() Opcode {
-	// TODO
-	return 0
+func (instr Instruction) Op() Opcode {
+	return Opcode(instr >> 4)
 }
 
-func (instr Instr) R1() Reg {
-	// TODO
-	return 0
+func (instr Instruction) R1() Reg {
+	return Reg((instr >> 2) & 3)
 }
 
-func (instr Instr) R2() Reg {
-	// TODO
-	return 0
+func (instr Instruction) R2() Reg {
+	return Reg(instr & 3)
 }
 
-func (instr Instr) IReg() IReg {
+func (instr Instruction) IReg() IReg {
 	return IReg(instr.R2())
 }
 
-func (instr Instr) Imm() byte {
-	// TODO
-	return 0
+func (instr Instruction) Imm() byte {
+	return byte(instr & 0b00001111)
 }
 
 /*
@@ -34,12 +30,12 @@ func (instr Instr) String() string {
 }
 */
 
-func (instr Instr) Encode() byte {
+func (instr Instruction) Encode() byte {
 	// TODO
 	return 0
 }
 
-func DecodeInstr(b byte) Instr {
+func DecodeInstruction(b byte) Instruction {
 	// TODO
 	return 0
 }
